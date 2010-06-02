@@ -80,26 +80,36 @@ namespace :spec do
     "integration:sinatra",
     "integration:merb",
     "integration:mechanize",
-    "integration:rails:webrat",
-    "integration:rails:selenium",
+    "integration:rails"
+    #"integration:rails:webrat",
+    #"integration:rails:selenium",
   ]
 
   namespace :integration do
-    namespace :rails do
-      task :selenium do
-        Dir.chdir "spec/integration/rails" do
-          result = system "rake -rubygems test_unit:selenium"
-          raise "Rails integration tests failed" unless result
-        end
-      end
 
-      task :webrat do
-        Dir.chdir "spec/integration/rails" do
-          result = system "rake -rubygems test_unit:rails"
-          raise "Rails integration tests failed" unless result
-        end
+    desc "Run the rails test just as webrat for now"
+    task :rails_v3 do
+      Dir.chdir "spec/integration/rails_v3" do
+        result = system "rake test_unit:rails"
+        raise "Rails integration tests failed" unless result
       end
     end
+
+    # namespace :rails do
+    #   task :selenium do
+    #     Dir.chdir "spec/integration/rails" do
+    #       result = system "rake -rubygems test_unit:selenium"
+    #       raise "Rails integration tests failed" unless result
+    #     end
+    #   end
+    #
+    #   task :webrat do
+    #     Dir.chdir "spec/integration/rails" do
+    #       result = system "rake -rubygems test_unit:rails"
+    #       raise "Rails integration tests failed" unless result
+    #     end
+    #   end
+    # end
 
     desc "Run the Merb integration specs"
     task :merb do
