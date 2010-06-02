@@ -94,10 +94,20 @@ class WebratTest < ActionController::IntegrationTest
     webrat.simulate do
       visit within_path
 
-      object = Object.new
-      def object.id
-        nil
+      class Object < Struct.new(:id)
+        extend ActiveModel::Naming
+        include ActiveModel::Conversion
+        def persisted?
+          id.present?
+        end
+        def to_key; id ? [id] : nil end
       end
+
+      object = Object.new
+      # def object.id
+      #   nil
+      # end
+      # def object.to_key; id ? [id] : nil end
 
       within(object) do
         click_link "Edit Object"

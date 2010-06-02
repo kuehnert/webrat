@@ -1,5 +1,6 @@
-require "action_controller"
-require "action_controller/integration"
+#require "action_controller"
+#require "action_controller/integration"
+require "action_controller/railtie"
 
 module ActionController #:nodoc:
   IntegrationTest.class_eval do

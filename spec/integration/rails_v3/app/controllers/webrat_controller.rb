@@ -1,7 +1,14 @@
-class FakeModel
-  def id
-    nil
+require "active_model"
+
+class FakeModel < Struct.new(:name, :id)
+  extend ActiveModel::Naming
+  include ActiveModel::Conversion
+
+  def persisted?
+    id.present?
   end
+  
+  def to_key; id ? [id] : nil end
 end
 
 class WebratController < ApplicationController

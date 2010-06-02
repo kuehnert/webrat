@@ -14,6 +14,6 @@ end
 
 require "webrat"
 Webrat.configure do |config|
-  config.mode = ENV['WEBRAT_INTEGRATION_MODE'].to_sym
+  config.mode = ENV['WEBRAT_INTEGRATION_MODE'] ? ENV['WEBRAT_INTEGRATION_MODE'].to_sym : :rails
   config.selenium_browser_key = '*safari'
 end
