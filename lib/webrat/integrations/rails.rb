@@ -1,6 +1,12 @@
-#require "action_controller"
-#require "action_controller/integration"
-require "action_controller/railtie"
+begin
+  # attempt to load rails 2.x
+  require "action_controller"
+  require "action_controller/integration"
+rescue LoadError
+  # otherwise load rails 3.x
+  #require "action_controller/railtie"
+  require 'action_dispatch/testing/integration'
+end
 
 module ActionController #:nodoc:
   IntegrationTest.class_eval do
