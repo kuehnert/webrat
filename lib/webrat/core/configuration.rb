@@ -106,7 +106,7 @@ module Webrat
       rescue LoadError => e
         # Only some modes have integration code that needs to
         # be loaded, so this is OK
-        puts "Load error dude = #{e}"
+        #puts "Load error dude = #{e}"
       end
     end
 
