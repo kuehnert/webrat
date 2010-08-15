@@ -350,10 +350,15 @@ module Webrat
 
       case Webrat.configuration.mode
       when :rails
-        if content_type
-          ActionController::TestUploadedFile.new(@original_value, content_type)
-        else
-          ActionController::TestUploadedFile.new(@original_value)
+        begin
+          if content_type
+            ActionController::TestUploadedFile.new(@original_value, content_type)
+          else
+            ActionController::TestUploadedFile.new(@original_value)
+          end
+        rescue
+          # Hack to use rack testing for rails 3
+          Rack::Test::UploadedFile.new(@original_value, content_type)
         end
       when :rack, :merb
         Rack::Test::UploadedFile.new(@original_value, content_type)

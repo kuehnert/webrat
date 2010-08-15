@@ -59,6 +59,7 @@ RailsV3::Application.routes.draw do |map|
   map.resource 'links', :only => [:show]
   map.resource 'buttons', :only => [:show, :create]
   map.resource 'fields', :only => [:show]
+  map.resources 'files', :only => [:new, :create]
   map.with_options :controller => "webrat" do |webrat|
     webrat.submit             "/submit",            :action => "submit"
     webrat.internal_redirect  "/internal_redirect", :action => "internal_redirect"
