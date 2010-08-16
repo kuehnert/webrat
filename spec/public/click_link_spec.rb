@@ -260,6 +260,24 @@ describe "click_link" do
     click_link "Put"
   end
 
+  it "should click rails 3 links with method post" do
+    with_html <<-HTML
+      <html>
+      <a href="/posts" data-method="post">Post</a>
+    HTML
+    webrat_session.should_receive(:post).with("/posts", {})
+    click_link "Post"
+  end
+
+  it "should click rails 3 links with method delete" do
+    with_html <<-HTML
+      <html>
+      <a href="/posts" data-method="delete">Delete</a>
+    HTML
+    webrat_session.should_receive(:delete).with("/posts", {})
+    click_link "Delete"
+  end
+
   it "should fail if the javascript link doesn't have a value for the _method input" do
     with_html <<-HTML
       <html>
