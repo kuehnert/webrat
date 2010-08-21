@@ -162,7 +162,9 @@ module Webrat
       end
 
       select date.year, :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:year]}"
-      select date.strftime('%B'), :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:month]}"
+      # select date.strftime('%B'), :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:month]}"
+      select I18n.t('date.month_names')[date.mon], :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:month]}"
+      
       select date.day, :from => "#{id_prefix}_#{DATE_TIME_SUFFIXES[:day]}"
     end
 
