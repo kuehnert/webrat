@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{webrat}
-  s.version = "0.7.2.pre"
+  s.version = "0.7.2.pre.mk"
 
   s.required_rubygems_version = Gem::Requirement.new("> 1.3.1") if s.respond_to? :required_rubygems_version=
   s.authors = ["Bryan Helmkamp"]

@@ -1,3 +1,5 @@
+= Fork to combine Rails 3, formtastic date select helpers
+
 = Webrat - Ruby Acceptance Testing for Web applications
 
 - http://gitrdoc.com/brynary/webrat

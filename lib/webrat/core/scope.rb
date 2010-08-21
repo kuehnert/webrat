@@ -349,7 +349,12 @@ module Webrat
 
       if options[:from]
         if (label = LabelLocator.new(@session, dom, options[:from]).locate)
-          label.for_id
+          id_prefix = label.for_id
+          if id_prefix =~ /(.*?)_[0-9]i$/
+            $1
+          else
+            id_prefix
+          end
         else
           raise NotFoundError.new("Could not find the label with text #{options[:from]}")
         end
